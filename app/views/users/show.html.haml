@@ -1,0 +1,34 @@
+.content
+  .header
+    .header__inner
+      .header__inner-main
+        %h1.header__inner-main__icon
+          = link_to "/" do
+            ReviewApp
+        - if user_signed_in?
+          .right__head
+            = link_to user_path(current_user.id) do
+              %h3.right__head__new
+                マイページ
+            = link_to destroy_user_session_path, method: :delete do
+              %h3.right__head__log
+                ログアウト
+        - else
+          .right__head
+            = link_to new_user_registration_path do
+              %h3.right__head__new
+                新規登録
+            = link_to new_user_session_path do
+              %h3.right__head__log
+                ログイン
+  %p.all
+    = @nickname
+    さんの投稿一覧
+  - @reviews.first(10).each do |review|
+    %ul.all__panel
+      = link_to review_path(review.id) do
+        %li.all__panel__pp
+          .all__panel__pp__title
+            = review.name
+          .all__panel__pp__img
+            = image_tag review.image

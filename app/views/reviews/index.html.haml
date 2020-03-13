@@ -1,0 +1,68 @@
+.content
+  .header
+    .header__inner
+      .header__inner-main
+        %h1.header__inner-main__icon
+          = link_to "/" do
+            ReviewApp
+        - if user_signed_in?
+          .right__head
+            = link_to user_path(current_user.id) do
+              %h3.right__head__new
+                マイページ
+            = link_to destroy_user_session_path, method: :delete do
+              %h3.right__head__log
+                ログアウト
+        - else
+          .right__head
+            = link_to new_user_registration_path do
+              %h3.right__head__new
+                新規登録
+            = link_to new_user_session_path do
+              %h3.right__head__log
+                ログイン
+  .contents
+    .contents__content
+      .contents__content__cover
+        .top
+          .top__content
+            .top__content__head
+              %h1.top__content__head__ue
+                気になる漫画の評価が分かる
+              %h1.top__content__head__sita
+                好きな漫画をオススメするアプリ
+            .top__content__searchbox
+              = form_tag('/search', method: :get, class: 'search-form') do
+                %input.search-form__input{name: "keyword", placeholder: "気になる漫画を探す", type: "text", value: ""}
+                %button.btn-search{title: "検索", type: "submit"}
+                  = icon('fas', 'search', class: 'search_icon')
+      .contents__content__box
+        .title
+          .title__text
+            %h1 人気
+        .row
+          .row__wrap
+            - @reviews.first(10).each do |review|
+              - if review.rate > 4
+                %ul.row__wrap__panel
+                  = link_to review_path(review.id) do
+                    %li.row__wrap__panel__pp
+                      .row__wrap__panel__pp__title
+                        = review.name
+                      .row__wrap__panel__pp__img
+                        = image_tag review.image
+      .contents__content__box
+        .title
+          .title__text
+            %h1 新着
+        .row
+          .row__wrap
+            - @reviews.last(10).each do |review|
+              .row__wrap__panel
+                = link_to review_path(review.id) do
+                  .row__wrap__panel__pp
+                    .row__wrap__panel__pp__title
+                      = review.name
+                    .row__wrap__panel__pp__img
+                      = image_tag review.image
+  = render "btn"

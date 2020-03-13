@@ -1,0 +1,136 @@
+.content
+  .header
+    .header__inner
+      .header__inner-main
+        %h1.header__inner-main__icon
+          = link_to "/" do
+            ReviewApp
+        - if user_signed_in?
+          .right__head
+            = link_to user_path(current_user.id) do
+              %h3.right__head__new
+                マイページ
+            = link_to destroy_user_session_path, method: :delete do
+              %h3.right__head__log
+                ログアウト
+        - else
+          .right__head
+            = link_to new_user_registration_path do
+              %h3.right__head__new
+                新規登録
+            = link_to new_user_session_path do
+              %h3.right__head__log
+                ログイン
+  .detail--contents
+    .contents--main
+      .contents--top
+        .contents--top__info
+          .name
+            = @review.name
+          .info__flex
+            .image
+              = image_tag @review.image
+              - if user_signed_in? && current_user.id == @review.user_id
+                .edit_deleate
+                  .edit_destroy_btn
+                    = link_to edit_review_path(params[:id]), class:"submit--btn" do
+                      %button.edit--btn
+                        編集
+                    = link_to "#", class:"submit--btn" do
+                      %button#destroy--btn
+                        削除
+                      #dialog.dialog
+                        .dialog-content
+                          .dialog-content__head
+                            %h5.dislog-content__head__title
+                              削除の確認
+                            %button{type: 'button', id: 'close', data:{dismiss: 'modal'}, aria:{hidden: :true}} ×
+                          .dialog-content__body
+                            %p 本当に削除してよろしいですか
+                          .dialog-content__foot
+                            = link_to "#", class:"submit--btn" do
+                              %button{class: 'btn__cancel', data: {dismiss: 'modal'}, aria: {hidden: :true}} やめる
+                            = link_to "#", class:"submit--btn", method: :delete do
+                              %button{class: 'btn__deleate'} 削除する
+            .information
+              %table
+                %tr.detail
+                  %th.detail__title
+                    漫画の説明・あらすじ
+                  %td.detail__content
+                    = @review.detail
+                %tr.nickname
+                  %th.nickname__title
+                    投稿者
+                  %td.nickname__content
+                    = @review.user.nickname
+                %tr.rate
+                  %th.rate__title
+                    評価
+                  %td.rate__content
+                    = @review.rate
+              .watch
+                .watch__btn
+                  = icon('fas', 'eye', class: 'eye_icon')
+                  %strong 観た
+                  %span に追加
+                .watch__btn
+                  = icon('fas', 'bookmark', class: 'book_icon')
+                  %strong 観たい
+                  %span に追加
+        .contents--under
+          %h1.comment__all
+            口コミ一覧
+          .comments
+            - if @comments
+              - @comments.each do |comment|
+                .comment__massage__text
+                  .comments__text__user
+                    %strong
+                      .comment__user
+                        = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  .comment__rate
+                    評価：
+                    = comment.rate
+                    %div{id: "star-rate-#{comment.id}"}
+                      :javascript
+                        $(document).on('turbolinks:load', function () {
+                          $('#star-rate-#{comment.id}').raty({
+                            size: 36,
+                            starOff:  '#{asset_path('star-off.png')}',
+                            starOn : '#{asset_path('star-on.png')}',
+                            starHalf: '#{asset_path('star-half.png')}',
+                            half: true,
+                            readOnly: true,
+                            score: #{comment.rate},
+                          });
+                        });
+                  = comment.text
+        .form
+          - if user_signed_in?
+            = form_with(model: [@review, @comment], local: true, id: "new_comment") do |f|
+              .comment__title#star
+                %h2 口コミを投稿
+                .comment__title__form
+                  = f.label :rate,'評価 ', class:'col-md-3 col-form-label'
+                  = f.hidden_field :rate, id: :review_star
+                :javascript
+                  $(document).on('turbolinks:load', function () {
+                    $('#star').raty({
+                      size     : 60,
+                      starOff:  '#{asset_path('star-off.png')}',
+                      starOn : '#{asset_path('star-on.png')}',
+                      starHalf: '#{asset_path('star-half.png')}',
+                      scoreName: 'comment[rate]',
+                      half: true,
+                    });
+                  });
+              %p 口コミの内容
+              = f.text_area :text, class: 'textbox', rows: "2"
+              = f.submit "投稿", class: "form__submit"
+          - else
+            = form_with(model: [@review, @comment], local: true, id: "new_comment") do |f|
+              = f.text_area :text, class: 'textbox', rows: "2"
+              = link_to "/" do
+                %button.comment--btn
+                  新規登録/ログインが必要です

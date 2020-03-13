@@ -1,0 +1,59 @@
+.content
+  .header
+    .header__inner
+      .header__inner-main
+        %h1.header__inner-main__icon
+          = link_to "/" do
+            ReviewApp
+        - if user_signed_in?
+          .right__head
+            = link_to user_path(current_user.id) do
+              %h3.right__head__new
+                マイページ
+            = link_to destroy_user_session_path, method: :delete do
+              %h3.right__head__log
+                ログアウト
+        - else
+          .right__head
+            = link_to new_user_registration_path do
+              %h3.right__head__new
+                新規登録
+            = link_to new_user_session_path do
+              %h3.right__head__log
+                ログイン
+  .content__row
+    .container
+      = form_with(model: @review, local: true) do |form|
+        %h3.content__head__title
+          投稿する
+        .content__title
+          .content__title__name
+            本の名前
+          .content__title__form
+            = form.text_field :name, placeholder: "本の名前"
+        .content__title#star
+          .content__title__form
+            = form.label :rate,'評価 ', class:'col-md-3 col-form-label'
+            = form.hidden_field :rate, id: :review_star
+          :javascript
+            $('#star').raty({
+              size     : 60,
+              starOff:  '#{asset_path('star-off.png')}',
+              starOn : '#{asset_path('star-on.png')}',
+              starHalf: '#{asset_path('star-half.png')}',
+              scoreName: 'review[rate]',
+              half: true,
+            });
+        .content__title
+          .content__title__name
+            画像のUrl
+          .content__title__form
+            = form.text_field :image, placeholder: "画像のUrl"
+        .content__title
+          .content__title__name
+            本の説明
+          .content__title__form__text
+            = form.text_area :detail, placeholder: "本の説明（あらすじ、見どころなど）" , rows: "7"
+        .content__btn
+          .form__btn
+            = form.submit "SEND" , class: "submit"

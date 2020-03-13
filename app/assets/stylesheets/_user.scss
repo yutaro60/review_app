@@ -1,0 +1,110 @@
+.content__user{
+  font-size: 20px;
+  font-family: fantasy;
+  padding-left: 30px;
+  h2{
+    margin-top: 22px;
+    font-weight: bold;
+    font-size: 28px;
+  }
+  .field {
+    position: relative;
+    width: 60%;
+    margin: 10px 0 20px 0;
+    label{
+      font-size: 15px;
+    }
+  }
+  
+  .field input {
+    background-color: rgb(248, 248, 248);
+    font: 15px/24px fantasy;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.3em;
+    letter-spacing: 1px;
+    border: 0;
+  }
+  .field input:focus {
+    outline: none;
+  }
+  .field input:focus::after {
+    outline: none;
+  }
+  .field::after {
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin-top: -1px;
+    content: '';
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #4d8f81;
+  }
+  .actions {
+    margin-top: 40px;
+    input{
+      font-size: 15px;
+      border: 2px solid black;
+      color:white;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 3px;
+      display: inline-block;
+      background-color: black;
+      cursor: pointer;
+      width: 130px;
+    }
+    input:hover {
+      border-color: lighten(#51ecc5, 15%);
+      color: lighten(#8fd4d4, 15%);
+    }
+  }
+}
+
+.all{
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 3px solid rgb(63, 63, 63);
+  border-top: 3px solid rgb(63, 63, 63);
+  &__panel{
+    width: 180px;
+    height: 280px;
+    margin:15px 5px 5px 30px;
+    background: #eaeaea;
+    display: inline-block;
+    &__pp{
+      padding: 7px 7px 7px;
+      position: relative;
+      &__title{
+        font-size: 11px;
+        font-family: verdana;
+        text-align: center;
+        margin: 0 0 5px;
+        font-size: large;
+        font-weight: bold;
+        color: black;
+      }
+      &__img{
+        color: #cccccc;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        height: 230px;
+        img{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          z-index: auto;
+          object-fit: cover;
+          border: solid 1px #c4c4c4;
+        }
+      }
+    }
+  }
+}
