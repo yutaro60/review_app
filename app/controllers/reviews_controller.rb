@@ -11,7 +11,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    Review.create(review_params)
+    @review = Review.new(review_params)
+    @review.save
+    rescue => e
+      flash[:alert] = '必須項目を入力してください。'
+      redirect_to new_review_path
   end
 
   def destroy

@@ -43,21 +43,21 @@
         .row
           .row__wrap
             - @reviews.first(10).each do |review|
-              -# - if review.rate > 4
-              %ul.row__wrap__panel
-                = link_to review_path(review.id) do
-                  %li.row__wrap__panel__pp
-                    .row__wrap__panel__pp__title
-                      = review.name
-                    .row__wrap__panel__pp__img
-                      = image_tag review.image
+              - if review.rate > 3.5
+                %ul.row__wrap__panel
+                  = link_to review_path(review.id) do
+                    %li.row__wrap__panel__pp
+                      .row__wrap__panel__pp__title
+                        = review.name
+                      .row__wrap__panel__pp__img
+                        = image_tag review.image
       .contents__content__box
         .title
           .title__text
             %h1 新着
         .row
           .row__wrap
-            - @reviews.last(10).each do |review|
+            - @reviews.last(10).reverse().each do |review|
               .row__wrap__panel
                 = link_to review_path(review.id) do
                   .row__wrap__panel__pp
@@ -65,4 +65,19 @@
                       = review.name
                     .row__wrap__panel__pp__img
                       = image_tag review.image
+      .contents__content__box
+        .title
+          .title__text
+            %h1 高評価
+        .row
+          .row__wrap
+            - @reviews.each do |review|
+              - if review.rate > 4
+                %ul.row__wrap__panel
+                  = link_to review_path(review.id) do
+                    %li.row__wrap__panel__pp
+                      .row__wrap__panel__pp__title
+                        = review.name
+                      .row__wrap__panel__pp__img
+                        = image_tag review.image
   = render "btn"
