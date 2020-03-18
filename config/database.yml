@@ -51,7 +51,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  pool: 20
+  pool: 10
   # <<: *default
   # database: review_app_production
   # username: review_app
