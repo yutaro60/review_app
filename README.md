@@ -10,9 +10,9 @@
  
 ***デモ***
  
-![トップページ](https://github.com/quin001cunx/newRead/blob/master/aa.png)
-![詳細ページ](https://github.com/quin001cunx/newRead/blob/master/bb.png)
-![削除機能](https://github.com/quin001cunx/newRead/blob/master/cc.png)
+![トップページ](https://github.com/yutaro60/review_app/blob/master/aa.jpg)
+![詳細ページ](https://github.com/yutaro60/review_app/blob/master/bb.jpg)
+![削除機能](https://github.com/yutaro60/review_app/blob/master/cc.jpg)
 ## 機能
  
 - 機能1（UI/計算 etc ...）
