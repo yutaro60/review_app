@@ -10,8 +10,9 @@
  
 ***デモ***
  
-![デモ](https://image-url.gif)
- 
+![トップページ](https://github.com/quin001cunx/newRead/blob/master/aa.png)
+![詳細ページ](https://github.com/quin001cunx/newRead/blob/master/bb.png)
+![削除機能](https://github.com/quin001cunx/newRead/blob/master/cc.png)
 ## 機能
  
 - 機能1（UI/計算 etc ...）
