@@ -10,64 +10,34 @@
  
 ***デモ***
  
-![トップページ](https://github.com/yutaro60/review_app/blob/master/aa.jpg)
-![詳細ページ](https://github.com/yutaro60/review_app/blob/master/bb.jpg)
-![削除機能](https://github.com/yutaro60/review_app/blob/master/cc.jpg)
+![トップページ](https://github.com/yutaro60/review_app/blob/master/aa.jpg)  
+![詳細ページ](https://github.com/yutaro60/review_app/blob/master/bb.png)   
+![削除機能](https://github.com/yutaro60/review_app/blob/master/cc.png)  
 ## 機能
  
-- 機能1（UI/計算 etc ...）
-- 機能2
-- 機能3
-- ...
+- レビュー機能
+- 削除機能
+- 投稿機能 
  
-他の機能はこちらを参照して下さい。`awesome-tool --help`.
- 
-## 必要要件
- 
-- 要件
-- 要件
-- 要件
-- ...
  
 ## 使い方
  
-1. 使い方
-2. 使い方
-3. 使い方
+1. 右上の新規登録ボタンで新規登録を行う
+2. 新規投稿ボタンで投稿する
+3. トップページの画像をクリックして詳細画面に遷移してレビューする
  
-## インストール
+## url
  
-```
-$ git clone https://github.com/TomoakiTANAKA/awesome-tool
-$ cd awesome-tool
-$ sh setup.sh
-$ ~do anything~
-```
+https://gentle-mesa-22233.herokuapp.com/
  
-## テスト
+## これからやりたいこと
  
-1. 使い方
-2. 使い方
-3. 使い方
- 
-## デプロイ
- 
-1. デプロイ
-2. デプロイ
-3. デプロイ
- 
-## その他
- 
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
-その他その他その他その他
+・お気に入り機能をつける  
+・検索機能をつける  
+・性別や年齢層の人気ランキングをつける  
  
 ## 作者
  
-[@TanakanoAnchan](https://twitter.com/TanakanoAnchan)
-mail to: xxxx@mail.com
+[@akasaka04070000](https://twitter.com/akasaka04070000)
+mail to: yasaka0407@gmail.com
  
-## ライセンス
- 
-[MIT](http://TomoakiTANAKA.mit-license.org)</blockquote>
